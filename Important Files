@@ -1,0 +1,5 @@
+Ansible has three main files that you need to consider:
+
+    /etc/ansiHost/inventory file: Contains the entry of the nodes that need to be managed
+    Ansible.cfg file: Located by default at /etc/ansible/ansible.cfg, it has the necessary privilege escalation options and the location of the inventory file
+    Main file: A playbook that has modules that perform various tasks on a host listed in an inventory or host file
