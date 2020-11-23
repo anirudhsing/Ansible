@@ -1,0 +1,15 @@
+- name: Eg of register variable
+  hosts: all
+  gather_facts: false
+  tasks:
+    - name: version of python
+      raw: python --version
+      register: abc
+
+    - debug:
+        var: abc
+
+    - name: Stor python version in /etc/motd
+      copy:
+        content: your python version is "{{abc}}"
+        dest: /etc/motd

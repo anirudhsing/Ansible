@@ -1,0 +1,12 @@
+- hosts: all
+  tasks:
+    - name: append line 
+      lineinfile:
+           line: "{{ ansible_ens33.ipv4.address }}  {{ ansible_fqdn }}"
+           dest: /etc/hosts
+
+
+    - name: store total  memory
+      copy:
+           content: "{{ ansible_memtotal_mb }}"
+           dest: /etc/motd

@@ -1,0 +1,33 @@
+- name: Example of playbook level variable
+  hosts: web
+  vars_files:
+    - /root/inventory/common.yml
+  tasks:
+    - name: Install pkg
+      yum: 
+        name: "{{ web_pkg }}"
+        state: installed
+      
+    - name: Service start "{{ web_pkg }}"
+      service: 
+        name: "{{ web_pkg }}"
+        state: started
+      
+    - name: create documentroot "{{web_root}}"
+      file:
+        path: "{{web_root}}"
+        state: directory
+
+    - name: copy "{{app}}" into "{{web_root}}"
+      copy:
+        src: "{{homedir}}/{{app}}"
+        dest: "{{web_root}}/index.html"
+
+    - debug:
+        msg: > 
+               "{{app}} 
+                {{web_pkg}}
+                {{web_root}} 
+                {{homedir}}"
+   
+        

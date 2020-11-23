@@ -1,0 +1,16 @@
+- hosts: all
+  tasks: 
+    - file:
+        path: /tmp/redhat
+        state: directory
+    - copy:
+        src: /etc/fstab
+        dest: /tmp/redhat
+    - service:
+        name: crond
+        state: restrted
+    - yum:
+        name:
+          - vsftpd
+          - ftpd
+        state: installed

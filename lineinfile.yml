@@ -1,0 +1,9 @@
+- hosts: all
+  tasks: 
+    - name: lineinfile
+      lineinfile: 
+        dest: /etc/sudoers
+        line: 'redhat ALL=(ALL) NOPASSWD: ALL'
+        state: present
+
+

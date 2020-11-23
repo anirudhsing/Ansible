@@ -1,0 +1,10 @@
+- hosts: all
+  tasks: 
+    - name: copy module
+      copy: 
+        src: /etc/fstab
+        dest: /tmp
+        mode: 0755
+        owner: redhat
+        group: redhat
+        

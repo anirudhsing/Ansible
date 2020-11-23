@@ -1,0 +1,16 @@
+- name: Practicle use of vault in Ansible
+  hosts: all
+  tasks:
+    - name: add user ravi  
+      user: 
+        name: ravi
+        state: present
+    - name: add user shyam  
+      user: 
+        name: shyam
+        state: present
+    - name: add user ram  
+      user: 
+        name: ram
+        state: present      
+  

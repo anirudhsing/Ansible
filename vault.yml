@@ -1,0 +1,9 @@
+- name: Practicle use of vault in Ansible
+  hosts: all
+  vars: 
+    mypasswd: redhat
+  tasks:
+    - name: add user ravi  and apply passwd
+      user: 
+        name: ravi
+        password: "{{mypasswd}} | password_hash('sha512')"

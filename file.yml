@@ -1,0 +1,11 @@
+- hosts: all
+  tasks: 
+    - name: create dir/file in dir
+      file:
+        path: /tmp/test
+        state: directory
+    
+    - name: create specific file
+      file: 
+        path: /tmp/test/abc.txt
+        state: file

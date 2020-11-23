@@ -1,0 +1,11 @@
+- hosts: all
+  tasks: 
+    - name: copying after taking backup
+      copy:
+        src: /etc/fstab
+        dest: /tmp
+        mode: 0755
+        owner: redhat
+        group: redhat
+        backup: true
+          

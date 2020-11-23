@@ -1,0 +1,19 @@
+- hosts: all
+  tasks:
+    - name: httpd installed
+      yum: 
+        name: httpd
+        state: installed
+
+    - name: start httpd
+      service:
+        name: httpd
+        state: started
+        enabled: true
+
+    - name: create index page
+      copy:
+        content: "hi world"
+        dest: /var/www/html/index.html     
+
+

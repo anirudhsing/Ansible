@@ -1,0 +1,6 @@
+- hosts: all
+  tasks:
+    - name: pushing file from url to servers
+      get_url:
+        url: http://www.costtocost.in/list/pricelist.pdf
+        dest: /tmp/redhat

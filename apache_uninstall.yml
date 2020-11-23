@@ -1,0 +1,10 @@
+- hosts: web
+  tasks: 
+    - name: apache service stopped
+      service: 
+        name: httpd
+        state: stopped
+    - name: apache uninstallation
+      yum: 
+        name: httpd
+        state: absents

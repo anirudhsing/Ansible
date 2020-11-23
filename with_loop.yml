@@ -1,0 +1,27 @@
+- name: Example of simple loop
+  hosts: all
+  tasks:
+    - name: add user ravi shyam and ram
+      user:
+        name: "{{item}}"
+        state: present
+      with_items:
+        - ravi
+        - shyam
+        - ram
+    - name: copy /etc/fstab /etc/group /etc/passwd in tmp
+      copy:
+        src: "{{item}}"
+        dest: /tmp
+      with_items:
+        - /etc/fstab
+        - /etc/group
+        - /etc/passwd
+    - name: copy /etc/fstab into three dir /tmp /root /var
+      copy:
+        src: /etc/fstab
+        dest: "{{item}}"
+      with_items:
+        - /tmp
+        - /root
+        - /var

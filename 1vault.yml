@@ -1,0 +1,12 @@
+- name: Practicle use of vault in Ansible
+  hosts: all
+  vars_files:
+    - /root/inventory/vault/vault1.yml
+  tasks:
+    - name: add user ravi  and apply passwd
+      user: 
+        name: ravi
+        password: "{{mypasswd}} | password_hash('sha512')"
+
+#Create 1 file
+#echo mypass > /root/inventory/vault/vault1.yml

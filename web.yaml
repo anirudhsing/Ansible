@@ -1,0 +1,38 @@
+- name: Welcome to playbook
+  hosts: web
+  tasks:
+    - name: installed httpd
+      yum:
+        name: httpd
+        state: installed
+
+    - name: start firewalld
+      service:
+        name: firewalld
+        state: started
+        enabled: true
+
+    - name: Ensure the default Apache port is 8080
+      lineinfile:
+        path: /etc/httpd/conf/httpd.conf
+        regexp: '^Listen '
+        insertafter: '^#Listen '
+        line: Listen 8080
+
+    - name: whitelist 8080 port in firewall
+      firewalld:
+        port: 8080/tcp
+        permanent: yes
+        state: enabled
+        immediate: yes
+
+    - name: copy index.html into /var/www/html
+      copy:
+        src: index.html
+        dest: /var/www/html
+
+    - name: start httpd service
+      service:
+        name: httpd
+        state: started
+        enabled: true

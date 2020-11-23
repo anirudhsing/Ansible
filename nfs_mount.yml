@@ -1,0 +1,7 @@
+- name: NFS mount module
+  hosts: all
+  tasks:
+    - name: nfs entry
+      lineinfile:
+        line: "10.10.1.1:/share /mnt  nfs defaults 0 0"
+        dest: /etc/fstab

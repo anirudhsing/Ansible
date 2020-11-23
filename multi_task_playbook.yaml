@@ -1,0 +1,23 @@
+- name: Welcome to Ansible playbook
+  hosts:
+    - db
+  tasks:
+    - file:
+        path: /tmp/redhat
+        state: directory
+    - copy:
+        src: /etc/fstab
+        dest: /tmp/redhat
+
+- name: 2nd play
+  hosts:
+    - web
+  tasks:
+    - service:
+        name: crond
+        state: restarted
+    - yum:
+        name:
+          - vsftpd
+          - ftp
+        state: installed

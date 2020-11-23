@@ -1,0 +1,21 @@
+- name: Type of indentation/Format
+  hosts: all
+  tasks: 
+    - name: single line format
+      copy: src=/etc/fstab dest=/tmp mode=0755 owner=redhat group=redhat
+
+    - name: Multi file Format
+      copy: 
+            src: /etc/fstab
+            dest: /tmp
+            mode: 0755
+            owner: redhat
+            group: redhat 
+
+    - name: Dictionary Format
+      copy: 
+        src: /etc/fstab
+        dest: /tmp
+        mode: 0755
+        owner: redhat
+        group: redhat

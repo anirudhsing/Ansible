@@ -1,0 +1,11 @@
+- name: Example of Fact use case
+  hosts: all
+  tasks:
+   - name: write os family  and kernel version
+     copy:
+        content: |
+                  "this is your os family {{ ansible_distribution }}
+                  and your kernel is {{ ansible_kernel }}
+                  your system ip-address is {{ ansible_ens33.ipv4.address }}"
+                  
+        dest: /etc/motd

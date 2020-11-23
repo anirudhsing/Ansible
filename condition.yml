@@ -1,0 +1,20 @@
+- name: eg of rigister with variable
+  hosts: all
+  tasks:
+    - name: first check the file existance
+      stat:
+        path: /etc/abc.conf
+      register: file
+
+    - debug:
+        var: file.stat.exists
+    - name: create file when not found
+      copy:
+        content: "thanks for creating file"
+        dest: /etc/abc.conf
+      when: file.stat.exists == false
+    - name: Append in file that already exists
+      lineinfile:
+        dest: /etc/abc.conf
+        line: "thanks for appending in file"
+      when: file.stat.exists == true
